@@ -1,12 +1,26 @@
 #ifndef CHILDWINDOW_H
 #define CHILDWINDOW_H
 
+#include <QtGui>
+#include <QWidget>
 #include <QMdiSubWindow>
+
+#include "mywidget.h"
+
+namespace Ui {
+    class ChildWindow;
+}
 
 class ChildWindow : public QMdiSubWindow
 {
+    Q_OBJECT
+
 public:
-    ChildWindow();
+    explicit ChildWindow(QWidget *parent = 0);
+    ~ChildWindow();
+
+private:
+    MyWidget *myWidget;
 };
 
 #endif // CHILDWINDOW_H
