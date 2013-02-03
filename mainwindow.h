@@ -20,6 +20,7 @@ private:
 
 public slots:
     void displayAbout();
+    void createChild();
 };
 
 #endif // MAINWINDOW_H
