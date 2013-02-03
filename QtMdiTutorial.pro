@@ -12,10 +12,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    mywidget.cpp
+    mywidget.cpp \
+    childwindow.cpp
 
 HEADERS  += mainwindow.h \
-    mywidget.h
+    mywidget.h \
+    childwindow.h
 
 FORMS    += mainwindow.ui \
     mywidget.ui
