@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>378</width>
+    <height>556</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,20 +25,20 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>378</width>
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
+   <widget class="QMenu" name="menuNew_Window">
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionNew_window"/>
+    <addaction name="actionNew_Window"/>
     <addaction name="actionAbout"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
-   <addaction name="menuFile"/>
+   <addaction name="menuNew_Window"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -47,11 +47,13 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionNew_Window"/>
+   <addaction name="actionQuit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionNew_window">
+  <action name="actionNew_Window">
    <property name="text">
-    <string>New window</string>
+    <string>New Window</string>
    </property>
   </action>
   <action name="actionAbout">
@@ -70,7 +72,7 @@
  <connections>
   <connection>
    <sender>actionQuit</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
    <hints>
@@ -86,7 +88,7 @@
   </connection>
   <connection>
    <sender>actionAbout</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>displayAbout()</slot>
    <hints>
@@ -101,8 +103,8 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionNew_window</sender>
-   <signal>activated()</signal>
+   <sender>actionNew_Window</sender>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>createChild()</slot>
    <hints>

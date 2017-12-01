@@ -4,7 +4,7 @@
 #include <QMainWindow>
 
 namespace Ui {
-    class MainWindow;
+class MainWindow;
 }
 
 class MainWindow : public QMainWindow
@@ -15,12 +15,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-private:
-    Ui::MainWindow *ui;
-
 public slots:
     void displayAbout();
     void createChild();
+
+private:
+    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H

@@ -7,20 +7,19 @@
 
 #include "mywidget.h"
 
-namespace Ui {
-    class ChildWindow;
-}
+namespace Ui{    class ChildWindow; }
+
 
 class ChildWindow : public QMdiSubWindow
 {
-    Q_OBJECT
+        Q_OBJECT
 
 public:
     explicit ChildWindow(QWidget *parent = 0);
     ~ChildWindow();
 
 private:
-    MyWidget *myWidget;
+    MyWidget *mywidget;
 };
 
 #endif // CHILDWINDOW_H

@@ -1,17 +1,14 @@
 #include "childwindow.h"
-
 #include <QMdiSubWindow>
-
 #include "mywidget.h"
 
 ChildWindow::ChildWindow(QWidget *parent) :
-  QMdiSubWindow(parent)
+QMdiSubWindow(parent)
 {
-    myWidget = new MyWidget(this);
-    this->setWidget(myWidget);
-}
+    mywidget = new MyWidget(this);
+    this->setWidget(mywidget);
+    }
 
-ChildWindow::~ChildWindow()
-{
-    myWidget->~MyWidget();
+ChildWindow::~ChildWindow(){
+    mywidget->~MyWidget();
 }

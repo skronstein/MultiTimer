@@ -1,9 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
-#include "childwindow.h"
-
 #include <QtGui>
+#include <QMessageBox>
+#include "childwindow.h"
 #include <QMdiArea>
 #include <QMdiSubWindow>
 
@@ -12,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("MultiTimer");
+    connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
 }
 
 MainWindow::~MainWindow()
@@ -19,16 +20,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::displayAbout()
-{
-  QMessageBox::about(this, tr("About this demo"),
-    tr("<p>This is a nice demo with <i>some</i> "
-       "<u>crazy</u> HTML content.</p>"));
+void MainWindow::displayAbout(){
+    QMessageBox::information(this, "About Timer","Version 1.0");
 }
 
-void MainWindow::createChild()
-{
-    ChildWindow *childWindow = new ChildWindow(ui->mdiArea);
-    childWindow->setAttribute(Qt::WA_DeleteOnClose);
-    childWindow->show();
+void MainWindow::createChild(){
+    ChildWindow *childwindow = new ChildWindow(ui->mdiArea);
+    childwindow->setAttribute(Qt::WA_DeleteOnClose);
+    childwindow->show();
 }
+

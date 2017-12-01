@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>editTimerWindow</class>
+ <widget class="QDialog" name="editTimerWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>270</width>
+    <height>361</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="reminderBeforeMins_lineEdit"/>
+   </item>
+   <item row="6" column="2">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>minutes before done</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="2">
+    <widget class="QPushButton" name="cancelButton">
+     <property name="text">
+      <string>Close</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="QPushButton" name="createButton">
+     <property name="text">
+      <string>Start Timer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QCheckBox" name="reminderBeforeDoneCheckBox">
+     <property name="text">
+      <string>Reminder</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>End time / Duration</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="4">
+       <widget class="QLineEdit" name="minutesTextEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>21</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>minutes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>hours</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="hoursTextEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>21</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" colspan="4">
+       <widget class="QTimeEdit" name="timeEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="time">
+         <time>
+          <hour>23</hour>
+          <minute>0</minute>
+          <second>0</second>
+         </time>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="endTimeRadioButton">
+        <property name="text">
+         <string>End time</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="durationRadioButton">
+        <property name="text">
+         <string>Duration</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="3">
+    <widget class="QCheckBox" name="reminderCheckBox">
+     <property name="toolTip">
+      <string>Show a message box when time is up.</string>
+     </property>
+     <property name="text">
+      <string>Reminder when done</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_windowTitle"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Window title:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QCheckBox" name="showProgressBarCheckBox">
+     <property name="text">
+      <string>Show progress bar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Timer Display settings</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="3">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Update Interval (s) :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QSpinBox" name="updateIntervalSpinBox"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="fontColorButton">
+        <property name="text">
+         <string>Edit font color</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Font size:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QSpinBox" name="fontSizeSpinBox"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>display:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="secondsComboBox">
+        <item>
+         <property name="text">
+          <string>no seconds</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>:s</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>:ss</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QCheckBox" name="showEndTimeCheckBox">
+     <property name="text">
+      <string>Show end time in title</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>lineEdit_windowTitle</tabstop>
+  <tabstop>timeEdit</tabstop>
+  <tabstop>hoursTextEdit</tabstop>
+  <tabstop>minutesTextEdit</tabstop>
+  <tabstop>updateIntervalSpinBox</tabstop>
+  <tabstop>fontSizeSpinBox</tabstop>
+  <tabstop>secondsComboBox</tabstop>
+  <tabstop>createButton</tabstop>
+  <tabstop>reminderCheckBox</tabstop>
+  <tabstop>reminderBeforeDoneCheckBox</tabstop>
+  <tabstop>reminderBeforeMins_lineEdit</tabstop>
+  <tabstop>cancelButton</tabstop>
+  <tabstop>fontColorButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
