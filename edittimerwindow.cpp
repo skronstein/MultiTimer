@@ -45,6 +45,7 @@ void editTimerWindow::on_createButton_clicked() //button text was renamed to "St
     else if(ui->durationRadioButton->isChecked()) widgetPtr->setDuration(ui->hoursTextEdit->text().toInt(), ui->minutesTextEdit->text().toInt());
     widgetPtr->updateTimer.start();
     widgetPtr->reminderBeforeDoneShowedBool = false;
+    updateWindowTitle();
     widgetPtr->updateTimeDisplay();
     hide();
 }
@@ -58,6 +59,7 @@ void editTimerWindow::updateWindowTitle()
     if(ui->showEndTimeCheckBox->isChecked()) str.append(" at " + widgetPtr->endTime.toString());
     widgetPtr->setWindowTitle(str);
     widgetPtr->displayTimeInTitle = ui->showEndTimeCheckBox->isChecked();
+    setWindowTitle("Edit: " + widgetPtr->windowTitle());
 }
 
 

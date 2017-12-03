@@ -22,21 +22,24 @@ MyWidget::MyWidget(QWidget *parent) :
     reminderBeforeDoneBool = true;
     reminderBeforeDoneShowedBool = false;
     reminderBeforeMins = 1;
-    fontSize = 30;
+    fontSize = 25;
     sDisplay = 0;
     ui->progressBar->setVisible(false);
 
     editTimerWindow *editTimer = new editTimerWindow(this);
+    editTimerPtr = editTimer;
     connect(&updateTimer, SIGNAL(timeout()), this, SLOT(updateTimeDisplay()));
-    editTimer->setAttribute(Qt::WA_DeleteOnClose);
+    //editTimer->setAttribute(Qt::WA_DeleteOnClose);
     editTimer->show();
 }
 
 
 void MyWidget::on_EditButton_clicked()
 {
-    editTimerWindow *editTimer = new editTimerWindow(this);
-    editTimer->show();
+    if(editTimerPtr->isHidden()){
+        //editTimerWindow *editTimer = new editTimerWindow(this);
+        editTimerPtr->show();
+    }
 }
 
 void MyWidget::setEndTime(QTime newEndTime){

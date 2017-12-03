@@ -32,6 +32,7 @@ public:
     QTime endTime;
     bool displayTimeInTitle;
     QString windowTitleOnly;
+    editTimerWindow *editTimerPtr;
 
 public slots:
     void setEndTime(QTime newEndTime);
