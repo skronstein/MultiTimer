@@ -94,6 +94,7 @@ void MyWidget::updateTimeDisplay(){
     if(sDisplay > 0){
         if(sDisplay == 1 ) timeTo /= 10; //to remove the last digit of the number of seconds
         textToDisplay.append(" : " + QString::number(timeTo)+ "s");
+        if(timeTo < 10) textToDisplay.insert(textToDisplay.length()-2, "0"); //to display :01s instead of just :0s when the # if seconds is a single digit #
     }
 
     ui->timeDisplay->setText(textToDisplay);
