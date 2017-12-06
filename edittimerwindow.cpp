@@ -138,3 +138,28 @@ void editTimerWindow::on_lineEdit_windowTitle_textEdited(const QString &arg1)
     widgetPtr->windowTitleOnly = ui->lineEdit_windowTitle->text();
     updateWindowTitle();
 }
+
+
+
+void editTimerWindow::changeToEndTime(){
+    ui->endTimeRadioButton->setChecked(true);
+}
+
+void editTimerWindow::changeToDuration(){
+    ui->durationRadioButton->setChecked(true);
+}
+
+void editTimerWindow::on_hoursTextEdit_textEdited(const QString &arg1)
+{
+    changeToDuration();
+}
+
+void editTimerWindow::on_minutesTextEdit_textEdited(const QString &arg1)
+{
+    changeToDuration();
+}
+
+void editTimerWindow::on_timeEdit_timeChanged(const QTime &time)
+{
+    changeToEndTime();
+}

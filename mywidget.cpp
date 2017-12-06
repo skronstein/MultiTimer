@@ -14,7 +14,7 @@ MyWidget::MyWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //default values
+    //default values for when a new timer is created
     setWindowTitle("New Timer");
     windowTitleOnly = windowTitle();
     updateTimer.setInterval(1);
@@ -37,13 +37,12 @@ MyWidget::MyWidget(QWidget *parent) :
 void MyWidget::on_EditButton_clicked()
 {
     if(editTimerPtr->isHidden()){
-        //editTimerWindow *editTimer = new editTimerWindow(this);
         editTimerPtr->show();
     }
 }
 
 void MyWidget::setEndTime(QTime newEndTime){
-    if(endTime != newEndTime){
+    if(endTime != newEndTime || ui->progressBar->value()==100){
     endTime = newEndTime;
     origTime = QTime::currentTime().secsTo(endTime);
     }
@@ -68,7 +67,6 @@ void MyWidget::setDuration(int hours, int mins){
          origTime = QTime::currentTime().secsTo(endTime);
     }
     else {
-        qDebug() <<"time is not valid";
         QMessageBox::warning(this, "Invalid time error", "Invalid time error");
     }
 }
@@ -77,7 +75,7 @@ void MyWidget::setDuration(int hours, int mins){
 void MyWidget::updateTimeDisplay(){
     int timeTo = QTime::currentTime().secsTo(endTime);
     int h, m;
-    if(origTime != 0) ui->progressBar->setValue(100 - timeTo*100/origTime);
+    if(origTime >= 0) ui->progressBar->setValue(100 - timeTo*100/origTime);
 
     h = timeTo / 3600;
     timeTo %= 3600;

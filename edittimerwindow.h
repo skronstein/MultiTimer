@@ -16,6 +16,8 @@ class editTimerWindow : public QDialog
 public:
     explicit editTimerWindow(QWidget *parent = 0);
     ~editTimerWindow();
+    void changeToEndTime();
+    void changeToDuration();
 
 signals:
     void redirectTime();
@@ -25,7 +27,10 @@ public slots:
     void redirectColorSlot(QColor color);
 
 private slots:
+    void updateWindowTitle();
+
     void on_cancelButton_clicked();
+
     void on_createButton_clicked();
 
     void on_fontColorButton_clicked();
@@ -40,13 +45,17 @@ private slots:
 
     void on_showProgressBarCheckBox_toggled(bool checked);
 
-    void updateWindowTitle();
-
     void on_reminderBeforeMins_lineEdit_textEdited(const QString &arg1);
 
     void on_updateIntervalSpinBox_valueChanged(int arg1);
 
     void on_lineEdit_windowTitle_textEdited(const QString &arg1);
+
+    void on_hoursTextEdit_textEdited(const QString &arg1);
+
+    void on_minutesTextEdit_textEdited(const QString &arg1);
+
+    void on_timeEdit_timeChanged(const QTime &time);
 
 private:
     Ui::editTimerWindow *ui;

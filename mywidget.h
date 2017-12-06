@@ -23,14 +23,12 @@ public:
     explicit MyWidget(QWidget *parent = 0);
     QTimer updateTimer;
     short sDisplay;
-    bool finished;
     ~MyWidget();
-    bool reminderBool, reminderBeforeDoneBool, reminderBeforeDoneShowedBool;
+    bool finished, displayTimeInTitle, reminderBool, reminderBeforeDoneBool, reminderBeforeDoneShowedBool;
     int reminderBeforeMins, fontSize;
     int getFontSize();
     void setProgressBarVisibility(bool setting);
     QTime endTime;
-    bool displayTimeInTitle;
     QString windowTitleOnly;
     editTimerWindow *editTimerPtr;
 
