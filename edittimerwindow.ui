@@ -32,21 +32,13 @@
       <string>End time / Duration</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="1">
-       <widget class="QRadioButton" name="durationRadioButton">
-        <property name="text">
-         <string>Duration</string>
-        </property>
-       </widget>
+      <item row="1" column="2">
+       <widget class="QSpinBox" name="hoursSpinBox"/>
       </item>
-      <item row="0" column="1">
-       <widget class="QRadioButton" name="endTimeRadioButton">
-        <property name="text">
-         <string>End time</string>
-        </property>
-       </widget>
+      <item row="1" column="5">
+       <widget class="QSpinBox" name="minutesSpinBox"/>
       </item>
-      <item row="0" column="2" colspan="4">
+      <item row="0" column="3" colspan="4">
        <widget class="QTimeEdit" name="timeEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -63,49 +55,31 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLineEdit" name="hoursTextEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>21</width>
-          <height>16777215</height>
-         </size>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="endTimeRadioButton">
+        <property name="text">
+         <string>End time</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="durationRadioButton">
+        <property name="text">
+         <string>Duration</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>mins</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3" colspan="2">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>hours</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>minutes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QLineEdit" name="minutesTextEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>21</width>
-          <height>16777215</height>
-         </size>
         </property>
        </widget>
       </item>
@@ -259,8 +233,6 @@
  <tabstops>
   <tabstop>lineEdit_windowTitle</tabstop>
   <tabstop>timeEdit</tabstop>
-  <tabstop>hoursTextEdit</tabstop>
-  <tabstop>minutesTextEdit</tabstop>
   <tabstop>updateIntervalSpinBox</tabstop>
   <tabstop>fontSizeSpinBox</tabstop>
   <tabstop>secondsComboBox</tabstop>

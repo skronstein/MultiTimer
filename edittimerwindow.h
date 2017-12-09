@@ -51,11 +51,11 @@ private slots:
 
     void on_lineEdit_windowTitle_textEdited(const QString &arg1);
 
-    void on_hoursTextEdit_textEdited(const QString &arg1);
-
-    void on_minutesTextEdit_textEdited(const QString &arg1);
-
     void on_timeEdit_timeChanged(const QTime &time);
+
+    void on_hoursSpinBox_valueChanged(int arg1);
+
+    void on_minutesSpinBox_valueChanged(int arg1);
 
 private:
     Ui::editTimerWindow *ui;

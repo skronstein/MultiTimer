@@ -42,7 +42,7 @@ void editTimerWindow::on_createButton_clicked() //button text was renamed to "St
 {
     MyWidget *widgetPtr = (MyWidget*)(this->parent());
     if(ui->endTimeRadioButton->isChecked())       widgetPtr->setEndTime(ui->timeEdit->time());
-    else if(ui->durationRadioButton->isChecked()) widgetPtr->setDuration(ui->hoursTextEdit->text().toInt(), ui->minutesTextEdit->text().toInt());
+    else if(ui->durationRadioButton->isChecked()) widgetPtr->setDuration(ui->hoursSpinBox->value(), ui->minutesSpinBox->value());
     widgetPtr->updateTimer.start();
     widgetPtr->reminderBeforeDoneShowedBool = false;
     updateWindowTitle();
@@ -149,17 +149,19 @@ void editTimerWindow::changeToDuration(){
     ui->durationRadioButton->setChecked(true);
 }
 
-void editTimerWindow::on_hoursTextEdit_textEdited(const QString &arg1)
-{
-    changeToDuration();
-}
 
-void editTimerWindow::on_minutesTextEdit_textEdited(const QString &arg1)
-{
-    changeToDuration();
-}
 
 void editTimerWindow::on_timeEdit_timeChanged(const QTime &time)
 {
     changeToEndTime();
+}
+
+void editTimerWindow::on_hoursSpinBox_valueChanged(int arg1)
+{
+    changeToDuration();
+}
+
+void editTimerWindow::on_minutesSpinBox_valueChanged(int arg1)
+{
+    changeToDuration();
 }
