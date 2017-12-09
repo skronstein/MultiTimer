@@ -45,7 +45,7 @@ private slots:
 
     void on_showProgressBarCheckBox_toggled(bool checked);
 
-    void on_reminderBeforeMins_lineEdit_textEdited(const QString &arg1);
+    //void on_reminderBeforeMins_lineEdit_textEdited(const QString &arg1);
 
     void on_updateIntervalSpinBox_valueChanged(int arg1);
 
@@ -56,6 +56,8 @@ private slots:
     void on_hoursSpinBox_valueChanged(int arg1);
 
     void on_minutesSpinBox_valueChanged(int arg1);
+
+    void on_reminderBeforeDoneSpinBox_valueChanged(int arg1);
 
 private:
     Ui::editTimerWindow *ui;

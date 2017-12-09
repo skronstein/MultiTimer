@@ -27,7 +27,7 @@ editTimerWindow::editTimerWindow(QWidget *parent) :
     ui->fontSizeSpinBox->setValue(widgetPtr->fontSize);
     ui->reminderCheckBox->setChecked(widgetPtr->reminderBool);
     ui->reminderBeforeDoneCheckBox->setChecked(widgetPtr->reminderBeforeDoneBool);
-    ui->reminderBeforeMins_lineEdit->setText(QString::number(widgetPtr->reminderBeforeMins));
+    ui->reminderBeforeDoneSpinBox->setValue(widgetPtr->reminderBeforeMins);
     ui->timeEdit->setTime(widgetPtr->endTime);
     ui->showProgressBarCheckBox->setChecked(widgetPtr->getProgressBarVisibility());
     ui->showEndTimeCheckBox->setChecked(widgetPtr->displayTimeInTitle);
@@ -111,19 +111,13 @@ void editTimerWindow::on_reminderBeforeDoneCheckBox_toggled(bool checked)
 {
     MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->reminderBeforeDoneBool = checked;
-    widgetPtr->reminderBeforeMins = ui->reminderBeforeMins_lineEdit->text().toInt();
+    widgetPtr->reminderBeforeMins = ui->reminderBeforeDoneSpinBox->value();
 }
 
 void editTimerWindow::on_showProgressBarCheckBox_toggled(bool checked)
 {
     MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->setProgressBarVisibility(checked);
-}
-
-void editTimerWindow::on_reminderBeforeMins_lineEdit_textEdited(const QString &arg1)
-{
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
-    widgetPtr->reminderBeforeMins = ui->reminderBeforeMins_lineEdit->text().toInt();
 }
 
 void editTimerWindow::on_updateIntervalSpinBox_valueChanged(int arg1)
@@ -164,4 +158,10 @@ void editTimerWindow::on_hoursSpinBox_valueChanged(int arg1)
 void editTimerWindow::on_minutesSpinBox_valueChanged(int arg1)
 {
     changeToDuration();
+}
+
+void editTimerWindow::on_reminderBeforeDoneSpinBox_valueChanged(int arg1)
+{
+    MyWidget *widgetPtr = (MyWidget*)(this->parent());
+    widgetPtr->reminderBeforeMins = ui->reminderBeforeDoneSpinBox->value();
 }
