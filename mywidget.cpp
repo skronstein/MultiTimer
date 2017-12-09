@@ -75,7 +75,7 @@ void MyWidget::setDuration(int hours, int mins){
 void MyWidget::updateTimeDisplay(){
     int timeTo = QTime::currentTime().secsTo(endTime);
     int h, m;
-    if(origTime >= 0) ui->progressBar->setValue(100 - timeTo*100/origTime);
+    if(origTime > 0) ui->progressBar->setValue(100 - timeTo*100/origTime);
 
     h = timeTo / 3600;
     timeTo %= 3600;
