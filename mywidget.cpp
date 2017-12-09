@@ -116,11 +116,13 @@ void MyWidget::updateTimeDisplay(){
 
 void MyWidget::setTextColor(QColor color){
     ui->timeDisplay->setTextColor(color);
+    ui->timeDisplay->setText(ui->timeDisplay->toPlainText());//to update the font color right when the user edits it
 }
 
 void MyWidget::setTextSize(int size){
     ui->timeDisplay->setFontPointSize(size);
     fontSize = size;
+    ui->timeDisplay->setText(ui->timeDisplay->toPlainText());//to update the font size right when the user edits the spinbox value
 }
 
 void MyWidget::setProgressBarVisibility(bool setting){
