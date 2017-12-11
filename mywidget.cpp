@@ -81,7 +81,7 @@ void MyWidget::timeoutSlot(){
 }
 
 void MyWidget::checkIfTimeIsUp(){
-    if(((float)(QTime::currentTime().secsTo(endTime) / 60 ) < (reminderBeforeMins)) && !reminderBeforeDoneShowedBool){
+    if(((float)(QTime::currentTime().secsTo(endTime) / 60 ) < (reminderBeforeMins)) && reminderBeforeDoneBool && !reminderBeforeDoneShowedBool){
         reminderBeforeDoneShowedBool = true;
         QMessageBox::information(this, QString::number(reminderBeforeMins) + " minutes until: " + windowTitle(),
                                        "Time is now " + QTime::currentTime().toString());
