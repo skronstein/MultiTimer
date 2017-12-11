@@ -88,6 +88,7 @@ void MyWidget::checkIfTimeIsUp(){
     }
 
     if(QTime::currentTime().secsTo(endTime) <= 0){
+        updateTimeDisplay();//to set the timer to show 0 now that time is up
         updateTimer.stop();
         if(reminderBool) QMessageBox::information(this, "Time for: " + windowTitle(),
                                                         "Time is now " + QTime::currentTime().toString());
