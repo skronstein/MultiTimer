@@ -46,6 +46,7 @@ void editTimerWindow::on_createButton_clicked() //button text was renamed to "St
     widgetPtr->updateTimer.start();
     widgetPtr->reminderBeforeDoneShowedBool = false;
     updateWindowTitle();
+    widgetPtr->updateTimerCounter = 1;
     widgetPtr->updateTimeDisplay();
     hide();
 }
@@ -123,7 +124,7 @@ void editTimerWindow::on_showProgressBarCheckBox_toggled(bool checked)
 void editTimerWindow::on_updateIntervalSpinBox_valueChanged(int arg1)
 {
     MyWidget *widgetPtr = (MyWidget*)(this->parent());
-    widgetPtr->updateTimer.setInterval(ui->updateIntervalSpinBox->value() * 1000); // *1000 because its milliseconds
+    widgetPtr->updateTimerInterval = abs((ui->updateIntervalSpinBox->value()));
 }
 
 void editTimerWindow::on_lineEdit_windowTitle_textEdited(const QString &arg1)

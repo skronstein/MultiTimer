@@ -17,7 +17,7 @@ MyWidget::MyWidget(QWidget *parent) :
     //default values for when a new timer is created
     setWindowTitle("New Timer");
     windowTitleOnly = windowTitle();
-    updateTimer.setInterval(1);
+    updateTimer.setInterval(1000);
     reminderBool = true;
     reminderBeforeDoneBool = true;
     reminderBeforeDoneShowedBool = false;
@@ -28,7 +28,7 @@ MyWidget::MyWidget(QWidget *parent) :
 
     editTimerWindow *editTimer = new editTimerWindow(this);
     editTimerPtr = editTimer;
-    connect(&updateTimer, SIGNAL(timeout()), this, SLOT(updateTimeDisplay()));
+    connect(&updateTimer, SIGNAL(timeout()), this, SLOT(timeoutSlot()));
     //editTimer->setAttribute(Qt::WA_DeleteOnClose);
     editTimer->show();
 }
@@ -71,8 +71,31 @@ void MyWidget::setDuration(int hours, int mins){
     }
 }
 
+void MyWidget::timeoutSlot(){
+    if(updateTimerCounter < updateTimerInterval) updateTimerCounter ++;
+    else{
+        updateTimeDisplay();
+        updateTimerCounter = 1;
+    }
+    checkIfTimeIsUp();
+}
+
+void MyWidget::checkIfTimeIsUp(){
+    if(((float)(QTime::currentTime().secsTo(endTime) / 60 ) < (reminderBeforeMins)) && !reminderBeforeDoneShowedBool){
+        reminderBeforeDoneShowedBool = true;
+        QMessageBox::information(this, QString::number(reminderBeforeMins) + " minutes until: " + windowTitle(),
+                                       "Time is now " + QTime::currentTime().toString());
+    }
+
+    if(QTime::currentTime().secsTo(endTime) <= 0){
+        updateTimer.stop();
+        if(reminderBool) QMessageBox::information(this, "Time for: " + windowTitle(),
+                                                        "Time is now " + QTime::currentTime().toString());
+    }
+}
 
 void MyWidget::updateTimeDisplay(){
+
     int timeTo = QTime::currentTime().secsTo(endTime);
     int h, m;
     if(origTime > 0) ui->progressBar->setValue(100 - timeTo*100/origTime);
@@ -97,21 +120,7 @@ void MyWidget::updateTimeDisplay(){
         textToDisplay.append(" : " + QString::number(timeTo)+ "s");
         if(timeTo < 10) textToDisplay.insert(textToDisplay.length()-2, "0"); //to display :01s instead of just :0s when the # if seconds is a single digit #
        }
-    qDebug() << "h is " << h;
-
     ui->timeDisplay->setText(textToDisplay);
-
-    if(((float)(QTime::currentTime().secsTo(endTime) / 60 ) < (reminderBeforeMins)) && !reminderBeforeDoneShowedBool){
-        reminderBeforeDoneShowedBool = true;
-        QMessageBox::information(this, QString::number(reminderBeforeMins) + " minutes until: " + windowTitle(),
-                                       "Time is now " + QTime::currentTime().toString());
-    }
-
-    if(QTime::currentTime().secsTo(endTime) <= 0){
-        updateTimer.stop();
-        if(reminderBool) QMessageBox::information(this, "Time for: " + windowTitle(),
-                                                        "Time is now " + QTime::currentTime().toString());
-    }
 }
 
 void MyWidget::setTextColor(QColor color){

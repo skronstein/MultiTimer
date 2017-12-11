@@ -25,7 +25,7 @@ public:
     short sDisplay;
     ~MyWidget();
     bool finished, displayTimeInTitle, reminderBool, reminderBeforeDoneBool, reminderBeforeDoneShowedBool;
-    int reminderBeforeMins, fontSize;
+    int reminderBeforeMins, fontSize, updateTimerCounter, updateTimerInterval;
     int getFontSize();
     void setProgressBarVisibility(bool setting);
     QTime endTime;
@@ -39,9 +39,11 @@ public slots:
     void updateTimeDisplay();
     void setTextSize(int size);
     bool getProgressBarVisibility();
+    void timeoutSlot();
 
 private slots:
     void on_EditButton_clicked();
+    void checkIfTimeIsUp();
 
 };
 
