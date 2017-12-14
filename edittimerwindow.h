@@ -37,8 +37,6 @@ private slots:
 
     void on_fontSizeSpinBox_valueChanged(int arg1);
 
-    void on_secondsComboBox_currentIndexChanged(int index);
-
     void on_reminderCheckBox_toggled(bool checked);
 
     void on_reminderBeforeDoneCheckBox_toggled(bool checked);
@@ -58,6 +56,8 @@ private slots:
     void on_minutesSpinBox_valueChanged(int arg1);
 
     void on_reminderBeforeDoneSpinBox_valueChanged(int arg1);
+
+    void on_displaySecondsCheckbox_toggled(bool checked);
 
 private:
     Ui::editTimerWindow *ui;

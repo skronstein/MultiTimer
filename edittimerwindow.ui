@@ -193,33 +193,11 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>display:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="1" colspan="2">
-       <widget class="QComboBox" name="secondsComboBox">
-        <item>
-         <property name="text">
-          <string>no seconds</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>:s</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>:ss</string>
-         </property>
-        </item>
+       <widget class="QCheckBox" name="displaySecondsCheckbox">
+        <property name="text">
+         <string>Display seconds</string>
+        </property>
        </widget>
       </item>
      </layout>
@@ -235,7 +213,6 @@
   <tabstop>timeEdit</tabstop>
   <tabstop>updateIntervalSpinBox</tabstop>
   <tabstop>fontSizeSpinBox</tabstop>
-  <tabstop>secondsComboBox</tabstop>
   <tabstop>createButton</tabstop>
   <tabstop>reminderCheckBox</tabstop>
   <tabstop>reminderBeforeDoneCheckBox</tabstop>

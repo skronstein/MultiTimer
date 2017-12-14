@@ -96,10 +96,11 @@ void editTimerWindow::on_fontSizeSpinBox_valueChanged(int arg1)
     widgetPtr->setTextSize(arg1);
 }
 
-void editTimerWindow::on_secondsComboBox_currentIndexChanged(int index)
+void editTimerWindow::on_displaySecondsCheckbox_toggled(bool checked)
 {
     MyWidget *widgetPtr = (MyWidget*)(this->parent());
-    widgetPtr->sDisplay = index;
+    widgetPtr->sDisplay = checked;
+    widgetPtr->updateTimeDisplay();
 }
 
 void editTimerWindow::on_reminderCheckBox_toggled(bool checked)
