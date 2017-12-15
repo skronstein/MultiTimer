@@ -6,6 +6,8 @@
 #include <QTime>
 #include <QTimer>
 
+class editTimerWindow;
+
 namespace Ui {
 class MyWidget;
 }
@@ -24,7 +26,7 @@ public:
     QTimer updateTimer;
     short sDisplay;
     ~MyWidget();
-    bool finished, displayTimeInTitle, reminderBool, reminderBeforeDoneBool, reminderBeforeDoneShowedBool;
+    bool displayTimeInTitle, reminderBool, reminderBeforeDoneBool, reminderBeforeDoneShowedBool;
     int reminderBeforeMins, fontSize, updateTimerCounter, updateTimerInterval;
     int getFontSize();
     void setProgressBarVisibility(bool setting);

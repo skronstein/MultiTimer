@@ -4,6 +4,9 @@
 #include <QDialog>
 #include <QColorDialog>
 #include <QColor>
+#include "mywidget.h"
+
+class MyWidget;
 
 namespace Ui {
 class editTimerWindow;
@@ -43,8 +46,6 @@ private slots:
 
     void on_showProgressBarCheckBox_toggled(bool checked);
 
-    //void on_reminderBeforeMins_lineEdit_textEdited(const QString &arg1);
-
     void on_updateIntervalSpinBox_valueChanged(int arg1);
 
     void on_lineEdit_windowTitle_textEdited(const QString &arg1);
@@ -62,6 +63,7 @@ private slots:
 private:
     Ui::editTimerWindow *ui;
     QColorDialog *colorDialogPtr;
+    MyWidget *widgetPtr;
 };
 
 #endif // EDITTIMERWINDOW_H

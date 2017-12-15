@@ -14,7 +14,7 @@ editTimerWindow::editTimerWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
+    widgetPtr = (MyWidget*)(this->parent());
     setWindowTitle("Edit: " + widgetPtr->windowTitle());
 
     connect(ui->showEndTimeCheckBox, SIGNAL(toggled(bool)), this, SLOT(updateWindowTitle()));
@@ -40,7 +40,6 @@ editTimerWindow::editTimerWindow(QWidget *parent) :
 
 void editTimerWindow::on_createButton_clicked() //button text was renamed to "Start Timer"
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     if(ui->endTimeRadioButton->isChecked())       widgetPtr->setEndTime(ui->timeEdit->time());
     else if(ui->durationRadioButton->isChecked()) widgetPtr->setDuration(ui->hoursSpinBox->value(), ui->minutesSpinBox->value());
     widgetPtr->updateTimer.start();
@@ -54,7 +53,6 @@ void editTimerWindow::on_createButton_clicked() //button text was renamed to "St
 
 void editTimerWindow::updateWindowTitle()
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     QString str;
     str = widgetPtr->windowTitleOnly = ui->lineEdit_windowTitle->text();
     if(ui->showEndTimeCheckBox->isChecked()) str.append(" at " + widgetPtr->endTime.toString());
@@ -81,56 +79,47 @@ void editTimerWindow::on_fontColorButton_clicked()
 }
 
 void editTimerWindow::redirectColorSlot(QColor color){
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->setTextColor(color);
 }
 
 void editTimerWindow::setFontColor(){
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->setTextColor(colorDialogPtr->currentColor());
 }
 
 void editTimerWindow::on_fontSizeSpinBox_valueChanged(int arg1)
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->setTextSize(arg1);
 }
 
 void editTimerWindow::on_displaySecondsCheckbox_toggled(bool checked)
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->sDisplay = checked;
     widgetPtr->updateTimeDisplay();
 }
 
 void editTimerWindow::on_reminderCheckBox_toggled(bool checked)
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->reminderBool = checked;
     }
 
 void editTimerWindow::on_reminderBeforeDoneCheckBox_toggled(bool checked)
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->reminderBeforeDoneBool = checked;
     widgetPtr->reminderBeforeMins = ui->reminderBeforeDoneSpinBox->value();
 }
 
 void editTimerWindow::on_showProgressBarCheckBox_toggled(bool checked)
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->setProgressBarVisibility(checked);
 }
 
 void editTimerWindow::on_updateIntervalSpinBox_valueChanged(int arg1)
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->updateTimerInterval = abs((ui->updateIntervalSpinBox->value()));
 }
 
 void editTimerWindow::on_lineEdit_windowTitle_textEdited(const QString &arg1)
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->windowTitleOnly = ui->lineEdit_windowTitle->text();
     updateWindowTitle();
 }
@@ -164,6 +153,5 @@ void editTimerWindow::on_minutesSpinBox_valueChanged(int arg1)
 
 void editTimerWindow::on_reminderBeforeDoneSpinBox_valueChanged(int arg1)
 {
-    MyWidget *widgetPtr = (MyWidget*)(this->parent());
     widgetPtr->reminderBeforeMins = ui->reminderBeforeDoneSpinBox->value();
 }
