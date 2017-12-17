@@ -131,7 +131,7 @@ void MyWidget::resizeEvent(QResizeEvent *event){
 
 void MyWidget::adjustTextSize(){
     qDebug() << "adjtextsize called" <<endl;
-    setTextSize(ui->timeDisplay->height() - 34);
+    setTextSize(ui->timeDisplay->height() * 0.5);
 }
 
 void MyWidget::setTextColor(QColor color){
