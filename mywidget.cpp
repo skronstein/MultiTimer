@@ -29,7 +29,6 @@ MyWidget::MyWidget(QWidget *parent) :
     editTimerWindow *editTimer = new editTimerWindow(this);
     editTimerPtr = editTimer;
     connect(&updateTimer, SIGNAL(timeout()), this, SLOT(timeoutSlot()));
-    //editTimer->setAttribute(Qt::WA_DeleteOnClose);
     editTimer->show();
 }
 
