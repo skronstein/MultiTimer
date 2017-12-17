@@ -32,8 +32,8 @@
     <widget class="QTextEdit" name="timeDisplay">
      <property name="minimumSize">
       <size>
-       <width>250</width>
-       <height>40</height>
+       <width>50</width>
+       <height>10</height>
       </size>
      </property>
      <property name="maximumSize">
