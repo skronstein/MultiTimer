@@ -133,7 +133,7 @@ void MyWidget::resizeEvent(QResizeEvent *event){
 void MyWidget::adjustTextSize(){
     qDebug() <<"adjustTextSize";
     int size;
-    size = (ui->timeDisplay->width() - 40) / (ui->timeDisplay->toPlainText().length() / 2 + 1);
+    size = (ui->timeDisplay->width() - 20) / ((ui->timeDisplay->toPlainText().length() / 1.8) + 1);
     if(ui->timeDisplay->height() * 0.5 < size) size = ui->timeDisplay->height() * 0.5;
     setTextSize(size);
 
