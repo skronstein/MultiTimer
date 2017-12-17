@@ -123,6 +123,10 @@ void MyWidget::updateTimeDisplay(){
     ui->timeDisplay->setText(textToDisplay);
 }
 
+void MyWidget::adjustTextSize(){
+    setTextSize(ui->timeDisplay->height() - 34);
+}
+
 void MyWidget::setTextColor(QColor color){
     ui->timeDisplay->setTextColor(color);
     ui->timeDisplay->setText(ui->timeDisplay->toPlainText());//to update the font color right when the user edits it

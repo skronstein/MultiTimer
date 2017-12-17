@@ -47,6 +47,7 @@ void editTimerWindow::on_createButton_clicked() //button text was renamed to "St
     updateWindowTitle();
     widgetPtr->updateTimerCounter = 1;
     widgetPtr->updateTimeDisplay();
+    widgetPtr->adjustTextSize();
     hide();
 }
 

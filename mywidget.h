@@ -42,6 +42,7 @@ public slots:
     void setTextSize(int size);
     bool getProgressBarVisibility();
     void timeoutSlot();
+    void adjustTextSize();
 
 private slots:
     void on_EditButton_clicked();
