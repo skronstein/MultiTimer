@@ -47,7 +47,7 @@ public slots:
 private slots:
     void on_EditButton_clicked();
     void checkIfTimeIsUp();
-
+    void resizeEvent(QResizeEvent *event);
 };
 
 #endif // MYWIDGET_H

@@ -20,6 +20,7 @@ public:
 
 private:
     MyWidget *mywidget;
+    //virtual void resizeEvent(QResizeEvent *resizeEvent);
 };
 
 #endif // CHILDWINDOW_H

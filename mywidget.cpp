@@ -123,7 +123,14 @@ void MyWidget::updateTimeDisplay(){
     ui->timeDisplay->setText(textToDisplay);
 }
 
+void MyWidget::resizeEvent(QResizeEvent *event){
+     QWidget::resizeEvent(event);
+    qDebug() << "resizeEvent()" <<endl;
+    adjustTextSize();
+}
+
 void MyWidget::adjustTextSize(){
+    qDebug() << "adjtextsize called" <<endl;
     setTextSize(ui->timeDisplay->height() - 34);
 }
 
