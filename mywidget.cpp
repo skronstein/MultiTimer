@@ -25,6 +25,7 @@ MyWidget::MyWidget(QWidget *parent) :
     fontSize = 25;
     sDisplay = 0;
     ui->progressBar->setVisible(false);
+    parentWidget()->resize(285, 150);
 
     editTimerWindow *editTimer = new editTimerWindow(this);
     editTimerPtr = editTimer;
