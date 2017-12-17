@@ -210,14 +210,22 @@
  </widget>
  <tabstops>
   <tabstop>lineEdit_windowTitle</tabstop>
+  <tabstop>showEndTimeCheckBox</tabstop>
+  <tabstop>endTimeRadioButton</tabstop>
   <tabstop>timeEdit</tabstop>
+  <tabstop>durationRadioButton</tabstop>
+  <tabstop>hoursSpinBox</tabstop>
+  <tabstop>minutesSpinBox</tabstop>
   <tabstop>updateIntervalSpinBox</tabstop>
   <tabstop>fontSizeSpinBox</tabstop>
-  <tabstop>createButton</tabstop>
+  <tabstop>fontColorButton</tabstop>
+  <tabstop>displaySecondsCheckbox</tabstop>
   <tabstop>reminderCheckBox</tabstop>
   <tabstop>reminderBeforeDoneCheckBox</tabstop>
+  <tabstop>reminderBeforeDoneSpinBox</tabstop>
+  <tabstop>showProgressBarCheckBox</tabstop>
+  <tabstop>createButton</tabstop>
   <tabstop>cancelButton</tabstop>
-  <tabstop>fontColorButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>
