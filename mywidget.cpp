@@ -130,8 +130,12 @@ void MyWidget::resizeEvent(QResizeEvent *event){
 }
 
 void MyWidget::adjustTextSize(){
-    qDebug() << "adjtextsize called" <<endl;
-    setTextSize(ui->timeDisplay->height() * 0.5);
+    qDebug() <<"adjustTextSize";
+    int size;
+    size = (ui->timeDisplay->width() - 40) / (ui->timeDisplay->toPlainText().length() / 2 + 1);
+    if(ui->timeDisplay->height() * 0.5 < size) size = ui->timeDisplay->height() * 0.5;
+    setTextSize(size);
+
 }
 
 void MyWidget::setTextColor(QColor color){
@@ -157,3 +161,4 @@ MyWidget::~MyWidget()
 {
     delete ui;
 }
+
