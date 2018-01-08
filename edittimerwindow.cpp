@@ -42,6 +42,10 @@ void editTimerWindow::on_createButton_clicked() //button text was renamed to "St
 {
     if(ui->endTimeRadioButton->isChecked())       widgetPtr->setEndTime(ui->timeEdit->time());
     else if(ui->durationRadioButton->isChecked()) widgetPtr->setDuration(ui->hoursSpinBox->value(), ui->minutesSpinBox->value());
+    startMywidgetTimer();
+}
+
+void editTimerWindow::startMywidgetTimer(){
     widgetPtr->updateTimer.start();
     widgetPtr->reminderBeforeDoneShowedBool = false;
     updateWindowTitle();
@@ -50,7 +54,6 @@ void editTimerWindow::on_createButton_clicked() //button text was renamed to "St
     widgetPtr->adjustTextSize();
     hide();
 }
-
 
 void editTimerWindow::updateWindowTitle()
 {

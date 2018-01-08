@@ -48,6 +48,8 @@ private slots:
     void on_EditButton_clicked();
     void checkIfTimeIsUp();
     void resizeEvent(QResizeEvent *event);
+    void restartAfterFin();
+    void restartAfterCurrentTime();
 };
 
 #endif // MYWIDGET_H

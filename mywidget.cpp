@@ -27,10 +27,9 @@ MyWidget::MyWidget(QWidget *parent) :
     ui->progressBar->setVisible(false);
     parentWidget()->resize(285, 150);
 
-    editTimerWindow *editTimer = new editTimerWindow(this);
-    editTimerPtr = editTimer;
+    editTimerPtr = new editTimerWindow(this);
     connect(&updateTimer, SIGNAL(timeout()), this, SLOT(timeoutSlot()));
-    editTimer->show();
+    editTimerPtr->show();
 }
 
 
@@ -81,18 +80,43 @@ void MyWidget::timeoutSlot(){
 }
 
 void MyWidget::checkIfTimeIsUp(){
+
+    //reminder X number of minutes before time is up
     if(((float)(QTime::currentTime().secsTo(endTime) / 60 ) < (reminderBeforeMins)) && reminderBeforeDoneBool && !reminderBeforeDoneShowedBool){
         reminderBeforeDoneShowedBool = true;
         QMessageBox::information(this, QString::number(reminderBeforeMins) + " minutes until: " + windowTitle(),
                                        "Time is now " + QTime::currentTime().toString());
     }
 
+    //reminder when time is up
     if(QTime::currentTime().secsTo(endTime) <= 0){
         updateTimeDisplay();//to set the timer to show 0 now that time is up
         updateTimer.stop();
-        if(reminderBool) QMessageBox::information(this, "Time for: " + windowTitle(),
-                                                        "Time is now " + QTime::currentTime().toString());
+        if(reminderBool && origTime > 0) {
+            QMessageBox msgBox;
+            msgBox.setText("Time for: " + windowTitleOnly + ".  Restart timer?");
+
+            QPushButton *restartAfterFinButton = msgBox.addButton(tr("Yes, from previous end time"), QMessageBox::YesRole);
+            connect(restartAfterFinButton, SIGNAL(clicked(bool)), this, SLOT(restartAfterFin()));
+
+            QPushButton *restartAfterCurrentTimeButton = msgBox.addButton(tr("Yes, from current time"), QMessageBox::YesRole);
+            connect(restartAfterCurrentTimeButton, SIGNAL(clicked(bool)), this, SLOT(restartAfterCurrentTime()));
+
+            msgBox.exec();//maybe exec instead of show?
+
+        }
     }
+}
+
+void MyWidget::restartAfterFin(){
+    setEndTime(endTime.addSecs(origTime));
+    editTimerPtr->startMywidgetTimer();
+    qDebug() <<"startMywidgetTimer called";
+}
+
+void MyWidget::restartAfterCurrentTime(){
+    setEndTime(QTime::currentTime().addSecs(origTime));
+    editTimerPtr->startMywidgetTimer();
 }
 
 void MyWidget::updateTimeDisplay(){

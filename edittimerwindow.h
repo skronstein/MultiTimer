@@ -28,13 +28,14 @@ signals:
 public slots:
     void setFontColor();
     void redirectColorSlot(QColor color);
+    void on_createButton_clicked();
+    void startMywidgetTimer();
 
 private slots:
     void updateWindowTitle();
 
     void on_cancelButton_clicked();
 
-    void on_createButton_clicked();
 
     void on_fontColorButton_clicked();
 
@@ -59,6 +60,7 @@ private slots:
     void on_reminderBeforeDoneSpinBox_valueChanged(int arg1);
 
     void on_displaySecondsCheckbox_toggled(bool checked);
+
 
 private:
     Ui::editTimerWindow *ui;
