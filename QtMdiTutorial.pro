@@ -28,15 +28,18 @@ SOURCES += \
         mainwindow.cpp \
     mywidget.cpp \
     childwindow.cpp \
-    edittimerwindow.cpp
+    edittimerwindow.cpp \
+    timeisupdialog.cpp
 
 HEADERS += \
         mainwindow.h \
     mywidget.h \
     childwindow.h \
-    edittimerwindow.h
+    edittimerwindow.h \
+    timeisupdialog.h
 
 FORMS += \
         mainwindow.ui \
     mywidget.ui \
-    edittimerwindow.ui
+    edittimerwindow.ui \
+    timeisupdialog.ui

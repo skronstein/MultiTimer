@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QMessageBox>
 #include <QProgressBar>
+#include "timeisupdialog.h"
 
 MyWidget::MyWidget(QWidget *parent) :
     QWidget(parent),
@@ -92,18 +93,12 @@ void MyWidget::checkIfTimeIsUp(){
     if(QTime::currentTime().secsTo(endTime) <= 0){
         updateTimeDisplay();//to set the timer to show 0 now that time is up
         updateTimer.stop();
-        if(reminderBool && origTime > 0) {
-            QMessageBox msgBox;
-            msgBox.setText("Time for: " + windowTitleOnly + ".  Restart timer?");
-
-            QPushButton *restartAfterFinButton = msgBox.addButton(tr("Yes, from previous end time"), QMessageBox::YesRole);
-            connect(restartAfterFinButton, SIGNAL(clicked(bool)), this, SLOT(restartAfterFin()));
-
-            QPushButton *restartAfterCurrentTimeButton = msgBox.addButton(tr("Yes, from current time"), QMessageBox::YesRole);
-            connect(restartAfterCurrentTimeButton, SIGNAL(clicked(bool)), this, SLOT(restartAfterCurrentTime()));
-
-            msgBox.exec();//maybe exec instead of show?
-
+        if(reminderBool /*&& origTime > 0*/) {
+            TIUDialog = new TimeIsUpDialog(this);
+            TIUDialog->show();
+            TIUDialog->setAttribute(Qt::WA_DeleteOnClose);
+            QApplication::beep();
+            qDebug() <<"TIUDialog constructor called";
         }
     }
 }
@@ -111,12 +106,27 @@ void MyWidget::checkIfTimeIsUp(){
 void MyWidget::restartAfterFin(){
     setEndTime(endTime.addSecs(origTime));
     editTimerPtr->startMywidgetTimer();
-    qDebug() <<"startMywidgetTimer called";
+    TIUDialog->close();
 }
 
 void MyWidget::restartAfterCurrentTime(){
     setEndTime(QTime::currentTime().addSecs(origTime));
     editTimerPtr->startMywidgetTimer();
+    TIUDialog->close();
+}
+
+void MyWidget::closeTimer()
+{
+    if(TIUDialog != nullptr) TIUDialog->close();
+    this->parentWidget()->close();
+    TIUDialog = nullptr;
+}
+
+void MyWidget::minimizeTimer()
+{
+    if(TIUDialog != nullptr) TIUDialog->close();
+    this->parentWidget()->setWindowState(Qt::WindowMinimized);
+    TIUDialog = nullptr;
 }
 
 void MyWidget::updateTimeDisplay(){
