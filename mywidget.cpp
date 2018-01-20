@@ -148,10 +148,10 @@ void MyWidget::updateTimeDisplay(){
 
     //mins
     textToDisplay.append(QString::number(m) + "m");
-    if(m < 10 && h != 0) textToDisplay.insert(textToDisplay.length()-2, "0"); //to display :01m instead of just :0s when the # if mins is a single digit #
+    if(m < 10 && h != 0) textToDisplay.insert(textToDisplay.length()-2, "0"); //to display :01m instead of just :0m when the # if mins is a single digit #
 
     //seconds
-    if(sDisplay > 0 || m == 0){ //   || m == 0   is to make the seconds display if less than 1 minutes is remaining
+    if(sDisplay > 0 || (m == 0 && h == 0)){ //   || m == 0   is to make the seconds display if less than 1 minutes is remaining
         textToDisplay.append(" : " + QString::number(timeTo)+ "s");
         if(timeTo < 10) textToDisplay.insert(textToDisplay.length()-2, "0"); //to display :01s instead of just :0s when the # if seconds is a single digit #
        }
