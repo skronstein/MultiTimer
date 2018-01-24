@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
+     <y>80</y>
      <width>161</width>
      <height>23</height>
     </rect>
@@ -46,13 +46,16 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
+     <y>40</y>
      <width>161</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Yes, after current time</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="CloseTimerButton">
