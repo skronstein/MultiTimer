@@ -16,10 +16,10 @@ class ChildWindow : public QMdiSubWindow
 
 public:
     explicit ChildWindow(QWidget *parent = 0);
+    MyWidget *mywidget;
     ~ChildWindow();
 
 private:
-    MyWidget *mywidget;
     //virtual void resizeEvent(QResizeEvent *resizeEvent);
 };
 

@@ -5,6 +5,7 @@
 #include <QColorDialog>
 #include <QColor>
 #include "mywidget.h"
+#include "mainwindow.h"
 
 class MyWidget;
 

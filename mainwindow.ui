@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>308</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuNew_Window">
@@ -38,7 +38,14 @@
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionUse_24_hour_Time"/>
+   </widget>
    <addaction name="menuNew_Window"/>
+   <addaction name="menuSettings"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -64,6 +71,14 @@
   <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionUse_24_hour_Time">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Use 24-hour Time for window titles</string>
    </property>
   </action>
  </widget>

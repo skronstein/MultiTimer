@@ -6,9 +6,11 @@
 #include <QTime>
 #include <QTimer>
 #include "timeisupdialog.h"
+#include "mainwindow.h"
 
 class editTimerWindow;
 class TimeIsUpDialog;
+//class MainWindow;
 
 namespace Ui {
 class MyWidget;
@@ -20,7 +22,6 @@ class MyWidget : public QWidget
 
 private:
     Ui::MyWidget *ui;
-    editTimerWindow *editTimerPtr;
     TimeIsUpDialog  *TIUDialog;
     int origTime;
 
@@ -35,6 +36,8 @@ public:
     void setProgressBarVisibility(bool setting);
     QTime endTime;
     QString windowTitleOnly;
+    MainWindow *mainWindowPtr;
+    editTimerWindow *editTimerPtr;
 
 public slots:
     void setEndTime(QTime newEndTime);

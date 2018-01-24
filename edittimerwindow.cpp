@@ -6,6 +6,7 @@
 #include <QColorDialog>
 #include <QColor>
 #include <QString>
+#include <mainwindow.h>
 
 editTimerWindow::editTimerWindow(QWidget *parent) :
     QDialog(parent),
@@ -55,11 +56,11 @@ void editTimerWindow::startMywidgetTimer(){
     hide();
 }
 
-void editTimerWindow::updateWindowTitle()
+void editTimerWindow::updateWindowTitle()//updates the title of the myWidget window, not the editTimerWindow
 {
     QString str;
     str = widgetPtr->windowTitleOnly = ui->lineEdit_windowTitle->text();
-    if(ui->showEndTimeCheckBox->isChecked()) str.append(" at " + widgetPtr->endTime.toString());
+    if(ui->showEndTimeCheckBox->isChecked()) str.append(" at " + widgetPtr->endTime.toString((widgetPtr->mainWindowPtr->timeFormatString)));
     widgetPtr->setWindowTitle(str);
     widgetPtr->displayTimeInTitle = ui->showEndTimeCheckBox->isChecked();
     setWindowTitle("Edit: " + widgetPtr->windowTitle());

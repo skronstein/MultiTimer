@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QProgressBar>
 #include "timeisupdialog.h"
+#include "mainwindow.h"
 
 MyWidget::MyWidget(QWidget *parent) :
     QWidget(parent),
@@ -31,6 +32,9 @@ MyWidget::MyWidget(QWidget *parent) :
     editTimerPtr = new editTimerWindow(this);
     connect(&updateTimer, SIGNAL(timeout()), this, SLOT(timeoutSlot()));
     editTimerPtr->show();
+
+    mainWindowPtr = (MainWindow*)(this->parent()->parent());
+    //connect()     mainWindowPtr->timeFormatString
 }
 
 

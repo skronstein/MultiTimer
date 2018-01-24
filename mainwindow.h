@@ -13,11 +13,15 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    QString timeFormatString;
     ~MainWindow();
 
 public slots:
     void displayAbout();
     void createChild();
+
+private slots:
+    void on_actionUse_24_hour_Time_triggered();
 
 private:
     Ui::MainWindow *ui;
