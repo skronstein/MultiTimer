@@ -156,6 +156,7 @@ void MyWidget::updateTimeDisplay(){
         if(timeTo < 10) textToDisplay.insert(textToDisplay.length()-2, "0"); //to display :01s instead of just :0s when the # if seconds is a single digit #
        }
     ui->timeDisplay->setText(textToDisplay);
+    adjustTextSize();
 }
 
 void MyWidget::resizeEvent(QResizeEvent *event){

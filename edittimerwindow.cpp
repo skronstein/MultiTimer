@@ -51,7 +51,6 @@ void editTimerWindow::startMywidgetTimer(){
     updateWindowTitle();
     widgetPtr->updateTimerCounter = 1;
     widgetPtr->updateTimeDisplay();
-    widgetPtr->adjustTextSize();
     hide();
 }
 
@@ -99,7 +98,6 @@ void editTimerWindow::on_displaySecondsCheckbox_toggled(bool checked)
 {
     widgetPtr->sDisplay = checked;
     widgetPtr->updateTimeDisplay();
-    widgetPtr->adjustTextSize();
 }
 
 void editTimerWindow::on_reminderCheckBox_toggled(bool checked)
