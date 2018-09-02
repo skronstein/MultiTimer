@@ -45,40 +45,17 @@ void MyWidget::setEndTime(QTime newEndTime){
     if(endDateTime.time() != newEndTime || ui->progressBar->value()==100){
         endDateTime.setTime(newEndTime);
         endDateTime.setDate(QDateTime::currentDateTime().date());
-        qDebug()<<("time difference 1 is ");
-        qDebug()<< endDateTime.secsTo(QDateTime::currentDateTime())+24*endDateTime.daysTo((QDateTime::currentDateTime()));
         if(endDateTime.time() < QTime::currentTime()) endDateTime = endDateTime.addDays(QDateTime::currentDateTime().daysTo(endDateTime)+1);
-        qDebug()<<("time difference 2 is ");
-        qDebug()<< endDateTime.secsTo(QDateTime::currentDateTime())+24*endDateTime.daysTo((QDateTime::currentDateTime()));
-        qDebug()<<endDateTime;
-        //endDateTime = endDateTime.addDays(1);//delete this
-        qDebug()<<endDateTime;
-        qDebug()<<("time difference 3 is ");
-        qDebug()<< endDateTime.secsTo(QDateTime::currentDateTime())+24*endDateTime.daysTo((QDateTime::currentDateTime()));
-        qDebug()<<endDateTime.daysTo(QDateTime::currentDateTime());
         origTime = QDateTime::currentDateTime().secsTo(endDateTime);
     }
-    qDebug()<<"newEndTime " << newEndTime.hour();
-    qDebug()<<"endtime set to " << endDateTime.time().hour() << endDateTime.date();
 }
 
 
 void MyWidget::setDuration(int hours, int mins){
     QDateTime newDateTime = QDateTime::currentDateTime();
 
-    //mins += newTime.minute();
-   // hours += newTime.hour();
-    qDebug()<<newDateTime;
     newDateTime = newDateTime.addSecs(mins * 60);
     newDateTime = newDateTime.addSecs(hours * 3600);
-    qDebug()<<newDateTime;
-/*
-    if(mins >= 60){ //to prevent an invalid value of minutes being fed to the setHMS function below
-        hours++;
-        mins %= 60;
-    }
-    hours %= 24;
-*/
 
     if(newDateTime.isValid()) {
          endDateTime.setTime(newDateTime.time());
@@ -117,7 +94,6 @@ void MyWidget::checkIfTimeIsUp(){
             TIUDialog->show();
             TIUDialog->setAttribute(Qt::WA_DeleteOnClose);
             QApplication::beep();
-            qDebug() <<"TIUDialog constructor called";
         }
     }
 }
