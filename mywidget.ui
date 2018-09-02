@@ -16,6 +16,12 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0" colspan="2">
     <widget class="QProgressBar" name="progressBar">
+     <property name="minimumSize">
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="value">
       <number>24</number>
      </property>
@@ -23,6 +29,12 @@
    </item>
    <item row="1" column="2">
     <widget class="QPushButton" name="EditButton">
+     <property name="minimumSize">
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text">
       <string>Edit</string>
      </property>
@@ -39,7 +51,7 @@
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>150</height>
+       <height>10000</height>
       </size>
      </property>
      <property name="sizeIncrement">
@@ -54,8 +66,17 @@
        <height>0</height>
       </size>
      </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
      <property name="sizeAdjustPolicy">
       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QTextEdit::NoWrap</enum>
      </property>
      <property name="readOnly">
       <bool>true</bool>
