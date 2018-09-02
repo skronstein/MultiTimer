@@ -28,7 +28,7 @@ editTimerWindow::editTimerWindow(QWidget *parent) :
     ui->reminderCheckBox->setChecked(widgetPtr->reminderBool);
     ui->reminderBeforeDoneCheckBox->setChecked(widgetPtr->reminderBeforeDoneBool);
     ui->reminderBeforeDoneSpinBox->setValue(widgetPtr->reminderBeforeMins);
-    ui->timeEdit->setTime(widgetPtr->endTime);
+    ui->timeEdit->setTime(widgetPtr->endDateTime.time());
     ui->showProgressBarCheckBox->setChecked(widgetPtr->getProgressBarVisibility());
     ui->showEndTimeCheckBox->setChecked(widgetPtr->displayTimeInTitle);
 
@@ -58,7 +58,7 @@ void editTimerWindow::updateWindowTitle()
 {
     QString str;
     str = widgetPtr->windowTitleOnly = ui->lineEdit_windowTitle->text();
-    if(ui->showEndTimeCheckBox->isChecked()) str.append(" at " + widgetPtr->endTime.toString());
+    if(ui->showEndTimeCheckBox->isChecked()) str.append(" at " + widgetPtr->endDateTime.toString());
     widgetPtr->setWindowTitle(str);
     widgetPtr->displayTimeInTitle = ui->showEndTimeCheckBox->isChecked();
     setWindowTitle("Edit: " + widgetPtr->windowTitle());

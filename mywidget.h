@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "edittimerwindow.h"
+#include <QDateTime>
 #include <QTime>
 #include <QTimer>
 #include "timeisupdialog.h"
@@ -33,7 +34,7 @@ public:
     int reminderBeforeMins, fontSize, updateTimerCounter, updateTimerInterval;
     int getFontSize();
     void setProgressBarVisibility(bool setting);
-    QTime endTime;
+    QDateTime endDateTime;
     QString windowTitleOnly;
 
 public slots:

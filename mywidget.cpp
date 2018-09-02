@@ -42,29 +42,48 @@ void MyWidget::on_EditButton_clicked()
 }
 
 void MyWidget::setEndTime(QTime newEndTime){
-    if(endTime != newEndTime || ui->progressBar->value()==100){
-    endTime = newEndTime;
-    origTime = QTime::currentTime().secsTo(endTime);
+    if(endDateTime.time() != newEndTime || ui->progressBar->value()==100){
+        endDateTime.setTime(newEndTime);
+        endDateTime.setDate(QDateTime::currentDateTime().date());
+        qDebug()<<("time difference 1 is ");
+        qDebug()<< endDateTime.secsTo(QDateTime::currentDateTime())+24*endDateTime.daysTo((QDateTime::currentDateTime()));
+        if(endDateTime.time() < QTime::currentTime()) endDateTime = endDateTime.addDays(QDateTime::currentDateTime().daysTo(endDateTime)+1);
+        qDebug()<<("time difference 2 is ");
+        qDebug()<< endDateTime.secsTo(QDateTime::currentDateTime())+24*endDateTime.daysTo((QDateTime::currentDateTime()));
+        qDebug()<<endDateTime;
+        //endDateTime = endDateTime.addDays(1);//delete this
+        qDebug()<<endDateTime;
+        qDebug()<<("time difference 3 is ");
+        qDebug()<< endDateTime.secsTo(QDateTime::currentDateTime())+24*endDateTime.daysTo((QDateTime::currentDateTime()));
+        qDebug()<<endDateTime.daysTo(QDateTime::currentDateTime());
+        origTime = QDateTime::currentDateTime().secsTo(endDateTime);
     }
+    qDebug()<<"newEndTime " << newEndTime.hour();
+    qDebug()<<"endtime set to " << endDateTime.time().hour() << endDateTime.date();
 }
 
 
 void MyWidget::setDuration(int hours, int mins){
-    QTime time = QTime::currentTime();
+    QDateTime newDateTime = QDateTime::currentDateTime();
 
-    mins += time.minute();
-    hours += time.hour();
-
+    //mins += newTime.minute();
+   // hours += newTime.hour();
+    qDebug()<<newDateTime;
+    newDateTime = newDateTime.addSecs(mins * 60);
+    newDateTime = newDateTime.addSecs(hours * 3600);
+    qDebug()<<newDateTime;
+/*
     if(mins >= 60){ //to prevent an invalid value of minutes being fed to the setHMS function below
         hours++;
         mins %= 60;
     }
     hours %= 24;
+*/
 
-
-    if(time.isValid()) {
-         endTime.setHMS(hours, mins, time.second(), 0);
-         origTime = QTime::currentTime().secsTo(endTime);
+    if(newDateTime.isValid()) {
+         endDateTime.setTime(newDateTime.time());
+         endDateTime.setDate(newDateTime.date());
+         origTime = QDateTime::currentDateTime().secsTo(endDateTime);
     }
     else {
         QMessageBox::warning(this, "Invalid time error", "Invalid time error");
@@ -83,14 +102,14 @@ void MyWidget::timeoutSlot(){
 void MyWidget::checkIfTimeIsUp(){
 
     //reminder X number of minutes before time is up
-    if(((float)(QTime::currentTime().secsTo(endTime) / 60 ) < (reminderBeforeMins)) && reminderBeforeDoneBool && !reminderBeforeDoneShowedBool){
+    if(((float)(QDateTime::currentDateTime().secsTo(endDateTime) / 60 ) < (reminderBeforeMins)) && reminderBeforeDoneBool && !reminderBeforeDoneShowedBool){
         reminderBeforeDoneShowedBool = true;
         QMessageBox::information(this, QString::number(reminderBeforeMins) + " minutes until: " + windowTitle(),
                                        "Time is now " + QTime::currentTime().toString());
     }
 
     //reminder when time is up
-    if(QTime::currentTime().secsTo(endTime) <= 0){
+    if(QDateTime::currentDateTime().secsTo(endDateTime) <= 0){
         updateTimeDisplay();//to set the timer to show 0 now that time is up
         updateTimer.stop();
         if(reminderBool /*&& origTime > 0*/) {
@@ -104,7 +123,7 @@ void MyWidget::checkIfTimeIsUp(){
 }
 
 void MyWidget::restartAfterFin(){
-    setEndTime(endTime.addSecs(origTime));
+    setEndTime(endDateTime.addSecs(origTime).time());
     editTimerPtr->startMywidgetTimer();
     TIUDialog->close();
 }
@@ -131,7 +150,7 @@ void MyWidget::minimizeTimer()
 
 void MyWidget::updateTimeDisplay(){
 
-    int timeTo = QTime::currentTime().secsTo(endTime);
+    int timeTo = QDateTime::currentDateTime().secsTo(endDateTime);
     int h, m;
     if(origTime > 0) ui->progressBar->setValue(100 - timeTo*100/origTime);
     if(timeTo < 0) timeTo = 0;
@@ -161,12 +180,10 @@ void MyWidget::updateTimeDisplay(){
 
 void MyWidget::resizeEvent(QResizeEvent *event){
      QWidget::resizeEvent(event);
-    qDebug() << "resizeEvent()" <<endl;
     adjustTextSize();
 }
 
 void MyWidget::adjustTextSize(){
-    qDebug() <<"adjustTextSize";
     int size;
     size = (ui->timeDisplay->width() - 20) / ((ui->timeDisplay->toPlainText().length() / 1.8) + 1);
     if(ui->timeDisplay->height() * 0.5 < size) size = ui->timeDisplay->height() * 0.5;
