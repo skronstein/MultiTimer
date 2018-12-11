@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>118</height>
+    <height>166</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Yes, after previous finish time</string>
+    <string>After previous finish time</string>
    </property>
   </widget>
   <widget class="QPushButton" name="RestartAfterCurrentTimeButton">
@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Yes, after current time</string>
+    <string>After current time</string>
    </property>
    <property name="default">
     <bool>true</bool>
@@ -71,7 +71,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>No, Close Timer</string>
+    <string>Close Timer</string>
    </property>
    <property name="flat">
     <bool>false</bool>
@@ -90,7 +90,36 @@
     </rect>
    </property>
    <property name="text">
-    <string>No, Minimize Timer</string>
+    <string>Minimize Timer</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="RestartNextDayButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>161</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Today/Tomorrow</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="EditTimerButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>120</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Edit Timer</string>
    </property>
   </widget>
  </widget>

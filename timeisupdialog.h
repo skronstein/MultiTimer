@@ -18,6 +18,11 @@ public:
     explicit TimeIsUpDialog(QWidget *parent = 0);
     ~TimeIsUpDialog();
 
+private slots:
+    void on_RestartNextDayButton_clicked();
+
+    void on_EditTimerButton_clicked();
+
 private:
     Ui::TimeIsUpDialog *ui;
     MyWidget *widgetPtr;

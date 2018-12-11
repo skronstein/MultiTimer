@@ -21,11 +21,11 @@ class MyWidget : public QWidget
 
 private:
     Ui::MyWidget *ui;
-    editTimerWindow *editTimerPtr;
     TimeIsUpDialog  *TIUDialog;
     int origTime;
 
 public:
+    editTimerWindow *editTimerPtr;
     explicit MyWidget(QWidget *parent = 0);
     QTimer updateTimer;
     short sDisplay;

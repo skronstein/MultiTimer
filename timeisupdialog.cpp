@@ -18,3 +18,16 @@ TimeIsUpDialog::~TimeIsUpDialog()
 {
     delete ui;
 }
+
+void TimeIsUpDialog::on_RestartNextDayButton_clicked()
+{
+    widgetPtr->endDateTime.setDate(QDate::currentDate().addDays(1));
+    widgetPtr->editTimerPtr->startMywidgetTimer();
+    close();
+}
+
+void TimeIsUpDialog::on_EditTimerButton_clicked()
+{
+    widgetPtr->editTimerPtr->show();
+    close();
+}
