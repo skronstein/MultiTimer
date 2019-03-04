@@ -22,8 +22,16 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Restart timer?</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

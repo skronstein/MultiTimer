@@ -12,6 +12,17 @@ TimeIsUpDialog::TimeIsUpDialog(QWidget *parent) :
     connect(ui->CloseTimerButton, SIGNAL(clicked(bool)), this->widgetPtr, SLOT(closeTimer()));
     connect(ui->MinimizeTimerButton, SIGNAL(clicked(bool)), this->widgetPtr, SLOT(minimizeTimer()));
     setWindowTitle("Time for: " + widgetPtr->windowTitleOnly);
+
+    timer.setInterval(1000);
+    timer.start();
+    connect(&timer, SIGNAL(timeout()), this, SLOT(flashText()));
+}
+
+TimeIsUpDialog::flashText(){
+    if(QTime::currentTime().second() % 2)
+        ui->label->setStyleSheet("QLabel { color : red }");
+    else
+        ui->label->setStyleSheet("QLabel { color : black }");
 }
 
 TimeIsUpDialog::~TimeIsUpDialog()
