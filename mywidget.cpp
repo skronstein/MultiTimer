@@ -81,7 +81,7 @@ void MyWidget::checkIfTimeIsUp(){
     //reminder X number of minutes before time is up
     if(((float)(QDateTime::currentDateTime().secsTo(endDateTime) / 60 ) < (reminderBeforeMins)) && reminderBeforeDoneBool && !reminderBeforeDoneShowedBool){
         reminderBeforeDoneShowedBool = true;
-        QMessageBox::information(this, QString::number(reminderBeforeMins) + " minutes until: " + windowTitle(),
+        QMessageBox::information(this, QString::number(QDateTime().currentDateTime().secsTo(endDateTime) / 60 + 1) + " minutes until: " + windowTitle(),
                                        "Time is now " + QTime::currentTime().toString());
     }
 

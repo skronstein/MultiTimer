@@ -51,6 +51,10 @@ void editTimerWindow::startMywidgetTimer(){
     updateWindowTitle();
     widgetPtr->updateTimerCounter = 1;
     widgetPtr->updateTimeDisplay();
+    if(widgetPtr->reminderBeforeMins > QDateTime::currentDateTime().secsTo(widgetPtr->endDateTime) / 60)
+        widgetPtr->reminderBeforeDoneShowedBool = true;
+    else
+        widgetPtr->reminderBeforeDoneShowedBool = false;
     hide();
 }
 
