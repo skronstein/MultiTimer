@@ -7,7 +7,8 @@ QMdiSubWindow(parent)
 {
     mywidget = new MyWidget(this);
     this->setWidget(mywidget);
-    }
+    setGeometry(0,0,363,height());
+}
 
 ChildWindow::~ChildWindow(){
     mywidget->~MyWidget();

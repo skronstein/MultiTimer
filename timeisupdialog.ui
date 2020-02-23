@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>373</width>
+    <width>385</width>
     <height>172</height>
    </rect>
   </property>
@@ -16,9 +16,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>40</x>
      <y>10</y>
-     <width>301</width>
+     <width>300</width>
      <height>20</height>
     </rect>
    </property>
@@ -28,7 +28,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Restart timer?</string>
+    <string>Time is up!</string>
    </property>
    <property name="textFormat">
     <enum>Qt::AutoText</enum>
@@ -42,7 +42,7 @@
     <rect>
      <x>10</x>
      <y>120</y>
-     <width>161</width>
+     <width>170</width>
      <height>23</height>
     </rect>
    </property>
@@ -55,7 +55,7 @@
     <rect>
      <x>10</x>
      <y>80</y>
-     <width>161</width>
+     <width>170</width>
      <height>23</height>
     </rect>
    </property>
@@ -72,9 +72,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>200</x>
      <y>40</y>
-     <width>161</width>
+     <width>170</width>
      <height>23</height>
     </rect>
    </property>
@@ -91,9 +91,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>200</x>
      <y>120</y>
-     <width>161</width>
+     <width>170</width>
      <height>23</height>
     </rect>
    </property>
@@ -106,7 +106,7 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>161</width>
+     <width>170</width>
      <height>23</height>
     </rect>
    </property>
@@ -120,9 +120,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>200</x>
      <y>80</y>
-     <width>161</width>
+     <width>170</width>
      <height>23</height>
     </rect>
    </property>
