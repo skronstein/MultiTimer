@@ -58,7 +58,7 @@ void editTimerWindow::updateWindowTitle()
 {
     QString str;
     str = widgetPtr->windowTitleOnly = ui->lineEdit_windowTitle->text();
-    if(ui->showEndTimeCheckBox->isChecked()) str.append(" at " + widgetPtr->endDateTime.toString());
+    if(ui->showEndTimeCheckBox->isChecked()) str.append(" at " + widgetPtr->endDateTime.time().toString());
     widgetPtr->setWindowTitle(str);
     widgetPtr->displayTimeInTitle = ui->showEndTimeCheckBox->isChecked();
     setWindowTitle("Edit: " + widgetPtr->windowTitle());
