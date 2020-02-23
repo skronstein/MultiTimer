@@ -18,7 +18,7 @@ TimeIsUpDialog::TimeIsUpDialog(QWidget *parent) :
     connect(&timer, SIGNAL(timeout()), this, SLOT(flashText()));
 }
 
-TimeIsUpDialog::flashText(){
+void TimeIsUpDialog::flashText(){
     if(QTime::currentTime().second() % 2)
         ui->label->setStyleSheet("QLabel { color : red }");
     else
