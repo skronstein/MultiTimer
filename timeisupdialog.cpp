@@ -32,7 +32,11 @@ TimeIsUpDialog::~TimeIsUpDialog()
 
 void TimeIsUpDialog::on_RestartNextDayButton_clicked()
 {
-    widgetPtr->endDateTime.setDate(QDate::currentDate().addDays(1));
+    if(QTime::currentTime() > widgetPtr->endDateTime.time()) {
+        widgetPtr->endDateTime.setDate(QDate::currentDate().addDays(1));
+    } else {
+        widgetPtr->endDateTime.setDate(QDate::currentDate());
+    }
     widgetPtr->editTimerPtr->startMywidgetTimer();
     close();
 }
