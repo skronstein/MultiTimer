@@ -21,7 +21,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::displayAbout(){
-    QMessageBox::information(this, "About Timer","Version 1.02");
+    QMessageBox::information(this, "About Timer","Version 1.03");
 }
 
 void MainWindow::createChild(){
