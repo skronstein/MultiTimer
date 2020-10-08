@@ -6,6 +6,7 @@
 #include <QDateTime>
 #include <QTime>
 #include <QTimer>
+#include <QMessageBox>
 #include "timeisupdialog.h"
 
 class editTimerWindow;
@@ -36,6 +37,7 @@ public:
     void setProgressBarVisibility(bool setting);
     QDateTime endDateTime;
     QString windowTitleOnly;
+	QMessageBox *messagebox = nullptr;
 
 public slots:
     void setEndTime(QTime newEndTime);
@@ -55,6 +57,7 @@ private slots:
     void on_EditButton_clicked();
     void checkIfTimeIsUp();
     void resizeEvent(QResizeEvent *event);
+    void nullifyMessageboxPointer();
 };
 
 #endif // MYWIDGET_H

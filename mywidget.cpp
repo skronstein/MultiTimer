@@ -5,7 +5,6 @@
 #include "edittimerwindow.h"
 #include <QDebug>
 #include <QColor>
-#include <QMessageBox>
 #include <QProgressBar>
 #include "timeisupdialog.h"
 
@@ -81,14 +80,20 @@ void MyWidget::checkIfTimeIsUp(){
     //reminder X number of minutes before time is up
     if(((float)(QDateTime::currentDateTime().secsTo(endDateTime) / 60 ) < (reminderBeforeMins)) && reminderBeforeDoneBool && !reminderBeforeDoneShowedBool){
         reminderBeforeDoneShowedBool = true;
-        QMessageBox::information(this, QString::number(QDateTime().currentDateTime().secsTo(endDateTime) / 60 + 1) + " minutes until: " + windowTitle(),
-                                       "Time is now " + QTime::currentTime().toString());
+        messagebox = new QMessageBox(this);
+        messagebox->setAttribute(Qt::WA_DeleteOnClose);
+        messagebox->setWindowTitle(QString::number(QDateTime().currentDateTime().secsTo(endDateTime) / 60 + 1) + " minutes until: " + windowTitle());
+        messagebox->setText("Time is now " + QTime::currentTime().toString());
+        messagebox->setModal(false);
+        messagebox->show();
+        connect(messagebox, SIGNAL(destroyed(QObject*)), this, SLOT(nullifyMessageboxPointer()));
     }
 
     //reminder when time is up
     if(QDateTime::currentDateTime().secsTo(endDateTime) <= 0){
         updateTimeDisplay();//to set the timer to show 0 now that time is up
         updateTimer.stop();
+        if((long)messagebox!=0) messagebox->close(); //Close the messagebox, if not already closed.
         if(reminderBool /*&& origTime > 0*/) {
             TIUDialog = new TimeIsUpDialog(this);
             TIUDialog->show();
@@ -96,6 +101,10 @@ void MyWidget::checkIfTimeIsUp(){
             QApplication::beep();
         }
     }
+}
+
+void MyWidget::nullifyMessageboxPointer(){
+    messagebox=nullptr;
 }
 
 void MyWidget::restartAfterFin(){

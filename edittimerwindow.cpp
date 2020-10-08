@@ -51,6 +51,7 @@ void editTimerWindow::startMywidgetTimer(){
     updateWindowTitle();
     widgetPtr->updateTimerCounter = 1;
     widgetPtr->updateTimeDisplay();
+    if((long)(widgetPtr->messagebox)!=0) widgetPtr->messagebox->close(); //Close the messagebox, if not already closed.
     if(widgetPtr->reminderBeforeMins > QDateTime::currentDateTime().secsTo(widgetPtr->endDateTime) / 60)
         widgetPtr->reminderBeforeDoneShowedBool = true;
     else
