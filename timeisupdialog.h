@@ -24,6 +24,8 @@ private slots:
     void on_EditTimerButton_clicked();
 
     void flashText();
+    void on_Snooze_clicked();
+    
 private:
     QTimer timer;
     Ui::TimeIsUpDialog *ui;

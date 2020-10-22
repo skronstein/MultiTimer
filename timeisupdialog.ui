@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>385</width>
-    <height>172</height>
+    <height>207</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -128,6 +128,19 @@
    </property>
    <property name="text">
     <string>Edit Timer</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Snooze">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>160</y>
+     <width>170</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Snooze</string>
    </property>
   </widget>
  </widget>

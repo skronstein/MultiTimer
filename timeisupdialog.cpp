@@ -1,5 +1,6 @@
 #include "timeisupdialog.h"
 #include "ui_timeisupdialog.h"
+#include <qdebug.h>
 
 TimeIsUpDialog::TimeIsUpDialog(QWidget *parent) :
     QDialog(parent),
@@ -12,7 +13,6 @@ TimeIsUpDialog::TimeIsUpDialog(QWidget *parent) :
     connect(ui->CloseTimerButton, SIGNAL(clicked(bool)), this->widgetPtr, SLOT(closeTimer()));
     connect(ui->MinimizeTimerButton, SIGNAL(clicked(bool)), this->widgetPtr, SLOT(minimizeTimer()));
     setWindowTitle("Time for: " + widgetPtr->windowTitleOnly);
-
     timer.setInterval(1000);
     timer.start();
     connect(&timer, SIGNAL(timeout()), this, SLOT(flashText()));
@@ -28,6 +28,16 @@ void TimeIsUpDialog::flashText(){
 TimeIsUpDialog::~TimeIsUpDialog()
 {
     delete ui;
+}
+
+void TimeIsUpDialog::on_Snooze_clicked()
+{
+    QTime time;
+    if(time.currentTime().hour() == 23 && time.currentTime().minute() >= 50)
+        widgetPtr->endDateTime.setDate(QDate::currentDate().addDays(1));
+    widgetPtr->endDateTime.setTime(QTime::currentTime().addSecs(600));
+    widgetPtr->editTimerPtr->startMywidgetTimer();
+    close();
 }
 
 void TimeIsUpDialog::on_RestartNextDayButton_clicked()
