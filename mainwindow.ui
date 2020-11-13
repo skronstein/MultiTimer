@@ -53,7 +53,10 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNew_Window">
    <property name="text">
-    <string>New Window</string>
+    <string>New Timer</string>
+   </property>
+   <property name="iconText">
+    <string>New Timer</string>
    </property>
   </action>
   <action name="actionAbout">

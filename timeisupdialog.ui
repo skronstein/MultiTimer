@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>385</width>
-    <height>207</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,7 +47,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>After previous finish time</string>
+    <string>After original time</string>
    </property>
   </widget>
   <widget class="QPushButton" name="RestartAfterCurrentTimeButton">
@@ -140,7 +140,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Snooze</string>
+    <string>Snooze 10 minutes</string>
    </property>
   </widget>
  </widget>
