@@ -38,6 +38,9 @@ void MyWidget::on_EditButton_clicked()
     if(editTimerPtr->isHidden()){
         editTimerPtr->show();
     }
+    if((long)TIUDialog != 0){
+        TIUDialog->close();
+    }
 }
 
 void MyWidget::setEndTime(QTime newEndTime){
@@ -96,6 +99,7 @@ void MyWidget::checkIfTimeIsUp(){
         if((long)messagebox!=0) messagebox->close(); //Close the messagebox, if not already closed.
         if(reminderBool /*&& origTime > 0*/) {
             TIUDialog = new TimeIsUpDialog(this);
+            connect(TIUDialog,  SIGNAL(destroyed(QObject*)), this, SLOT(nullifyTIUDialogPointer()));
             TIUDialog->show();
             TIUDialog->setAttribute(Qt::WA_DeleteOnClose);
             QApplication::beep();
@@ -105,6 +109,10 @@ void MyWidget::checkIfTimeIsUp(){
 
 void MyWidget::nullifyMessageboxPointer(){
     messagebox=nullptr;
+}
+
+void MyWidget::nullifyTIUDialogPointer(){
+    TIUDialog=nullptr;
 }
 
 void MyWidget::restartAfterFin(){

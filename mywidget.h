@@ -22,7 +22,7 @@ class MyWidget : public QWidget
 
 private:
     Ui::MyWidget *ui;
-    TimeIsUpDialog  *TIUDialog;
+    TimeIsUpDialog  *TIUDialog = nullptr;
     int origTime;
 
 public:
@@ -58,6 +58,7 @@ private slots:
     void checkIfTimeIsUp();
     void resizeEvent(QResizeEvent *event);
     void nullifyMessageboxPointer();
+    void nullifyTIUDialogPointer();
 };
 
 #endif // MYWIDGET_H
