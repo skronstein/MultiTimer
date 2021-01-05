@@ -31,6 +31,7 @@ editTimerWindow::editTimerWindow(QWidget *parent) :
     ui->timeEdit->setTime(widgetPtr->endDateTime.time());
     ui->showProgressBarCheckBox->setChecked(widgetPtr->getProgressBarVisibility());
     ui->showEndTimeCheckBox->setChecked(widgetPtr->displayTimeInTitle);
+    ui->lineEdit_windowTitle->setFocus();
 
     QColorDialog *colorDialog = new QColorDialog(this);
     colorDialogPtr = colorDialog;
