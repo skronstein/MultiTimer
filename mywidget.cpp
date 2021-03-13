@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QProgressBar>
 #include "timeisupdialog.h"
+#include "util.c"
 
 MyWidget::MyWidget(QWidget *parent) :
     QWidget(parent),
@@ -38,7 +39,7 @@ void MyWidget::on_EditButton_clicked()
     if(editTimerPtr->isHidden()){
         editTimerPtr->show();
     }
-    if((long)TIUDialog != 0){
+    if(ptrIsValid(TIUDialog) != 0){
         TIUDialog->close();
     }
 }
@@ -96,7 +97,7 @@ void MyWidget::checkIfTimeIsUp(){
     if(QDateTime::currentDateTime().secsTo(endDateTime) <= 0){
         updateTimeDisplay();//to set the timer to show 0 now that time is up
         updateTimer.stop();
-        if((long)messagebox!=0) messagebox->close(); //Close the messagebox, if not already closed.
+        if(ptrIsValid(messagebox)) messagebox->close(); //Close the messagebox, if not already closed.
         if(reminderBool /*&& origTime > 0*/) {
             TIUDialog = new TimeIsUpDialog(this);
             connect(TIUDialog,  SIGNAL(destroyed(QObject*)), this, SLOT(nullifyTIUDialogPointer()));

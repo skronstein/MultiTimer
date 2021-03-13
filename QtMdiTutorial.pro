@@ -31,7 +31,8 @@ SOURCES += \
     mywidget.cpp \
     childwindow.cpp \
     edittimerwindow.cpp \
-    timeisupdialog.cpp
+    timeisupdialog.cpp \
+    util.c
 
 HEADERS += \
         mainwindow.h \
