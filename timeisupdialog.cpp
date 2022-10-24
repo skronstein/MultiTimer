@@ -32,10 +32,17 @@ TimeIsUpDialog::~TimeIsUpDialog()
 
 void TimeIsUpDialog::on_Snooze_clicked()
 {
-    QTime time;
-    if(time.currentTime().hour() == 23 && time.currentTime().minute() >= 50)
+    //set date
+    if(QTime::currentTime().hour() == 23 && QTime::currentTime().minute() >= 50){
         widgetPtr->endDateTime.setDate(QDate::currentDate().addDays(1));
+    } else {
+        widgetPtr->endDateTime.setDate(QDate::currentDate());
+    }
+    
+    //set time
     widgetPtr->endDateTime.setTime(QTime::currentTime().addSecs(600));
+    //if(widgetPtr->endDateTime.secsTo(QDateTime::currentDateTime()) < 0)
+    
     widgetPtr->editTimerPtr->startMywidgetTimer();
     close();
 }
